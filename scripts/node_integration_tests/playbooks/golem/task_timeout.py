@@ -13,7 +13,7 @@ class TaskTimeoutAndRestart(NodeTestPlaybook):
     * because there's just one Provider who accepts only one subtask,
       the task as a whole should time out,
     * afterwards, the nodes are restarted, this time both as unmodified
-      Golem nodes,
+      Evera nodes,
     * the timed-out task (with only one subtask successfully finished) is then
       restarted using the `comp.task.restart_subtasks` call - the result is a
       new task which contains one already-completed subtask and another,

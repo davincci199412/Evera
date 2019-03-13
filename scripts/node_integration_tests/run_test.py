@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 from argparse import ArgumentParser
 
-from golem.config.environments import set_environment
+from evera.config.environments import set_environment
 
 from scripts.node_integration_tests.playbooks import run_playbook
 from scripts.node_integration_tests.helpers import mkdatadir
@@ -12,7 +12,7 @@ if __name__ == '__main__':
     parser.add_argument(
         'playbook_class',
         help="a dot-separated path to the playbook class within `playbooks`,"
-             " e.g. golem.regular_run.RegularRun",
+             " e.g. evera.regular_run.RegularRun",
     )
     parser.add_argument(
         '--task-package',

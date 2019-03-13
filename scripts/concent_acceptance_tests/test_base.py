@@ -1,9 +1,9 @@
 import pickle
 import unittest
 
-from golem_messages import message
-from golem_messages import factories as msg_factories
-from golem_messages.shortcuts import dump, load
+from evera_messages import message
+from evera_messages import factories as msg_factories
+from evera_messages.shortcuts import dump, load
 
 from .base import ConcentBaseTest
 

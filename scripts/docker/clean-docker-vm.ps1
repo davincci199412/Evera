@@ -43,7 +43,7 @@ try {
 # TODO: Change to docker or docker-machine updated, always execute this time from TB -> binaries.
 #if ( -Not ( $hasInstalled.indexof("Docker") = -1 ))
 #{
-$dockerRmCmd = """" + $pfSFFolder + "Docker Toolbox\docker-machine.exe"" rm -f golem"
+$dockerRmCmd = """" + $pfSFFolder + "Docker Toolbox\docker-machine.exe"" rm -f evera"
 cmd.exe /c $dockerRmCmd
 #}
 

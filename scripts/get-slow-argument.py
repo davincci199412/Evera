@@ -21,7 +21,7 @@ class ApprovalError(Exception):
 # When build is not a PR the input is: "" or "false"
 if pull_request_id not in ["", "false"]:
     base_url = "https://api.github.com/" \
-        "repos/golemfactory/golem/pulls/{}/reviews"
+        "repos/everafactory/evera/pulls/{}/reviews"
     url = base_url.format(pull_request_id)
 
     try:

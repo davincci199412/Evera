@@ -2,8 +2,8 @@ import calendar
 import datetime
 import time
 
-from golem_messages import helpers as msg_helpers
-from golem_messages.factories.tasks import ReportComputedTaskFactory
+from evera_messages import helpers as msg_helpers
+from evera_messages.factories.tasks import ReportComputedTaskFactory
 
 from scripts.node_integration_tests import helpers
 

@@ -7,11 +7,11 @@ Provider node failing the subtask
 import mock
 import sys
 
-from golem_messages.message.tasks import WantToComputeTask, TaskToCompute
-from golem.task.tasksession import TaskSession
+from evera_messages.message.tasks import WantToComputeTask, TaskToCompute
+from evera.task.tasksession import TaskSession
 from scripts.node_integration_tests import params
 
-from golemapp import start  # noqa: E402 module level import not at top of file
+from everaapp import start  # noqa: E402 module level import not at top of file
 
 sys.argv.extend(params.PROVIDER_ARGS_DEBUG)
 
@@ -37,8 +37,8 @@ def interpret(self, msg, *args, **kwargs):
     original_interpret(self, msg, *args, **kwargs)
 
 
-@mock.patch("golem.task.tasksession.TaskSession.interpret", interpret)
-@mock.patch("golem.task.tasksession.TaskSession.send", send)
+@mock.patch("evera.task.tasksession.TaskSession.interpret", interpret)
+@mock.patch("evera.task.tasksession.TaskSession.send", send)
 def start_node(*_):
     start()
 

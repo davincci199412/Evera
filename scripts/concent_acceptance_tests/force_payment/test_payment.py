@@ -4,13 +4,13 @@ import sys
 import time
 import typing
 
-from golem_messages import cryptography
-from golem_messages import factories as msg_factories
-from golem_messages import message
-from golem_messages.utils import encode_hex as encode_key_id
-import golem_sci.structs
+from evera_messages import cryptography
+from evera_messages import factories as msg_factories
+from evera_messages import message
+from evera_messages.utils import encode_hex as encode_key_id
+import evera_sci.structs
 
-from golem.network.concent import exceptions as concent_exceptions
+from evera.network.concent import exceptions as concent_exceptions
 
 from ..base import SCIBaseTest
 
@@ -298,7 +298,7 @@ class RequestorPaysTest(ForcePaymentBase):
         self.put_deposit(self.requestor_sci, V)
         tx_hash = self.requestor_sci.batch_transfer(
             payments=[
-                golem_sci.structs.Payment(
+                evera_sci.structs.Payment(
                     LOA[-1].task_to_compute.provider_ethereum_address,
                     int(V*modifier),
                 ),
@@ -310,7 +310,7 @@ class RequestorPaysTest(ForcePaymentBase):
             tx_hash,
         )
         confirmed = False
-        def _on_batch(receipt: golem_sci.structs.TransactionReceipt):
+        def _on_batch(receipt: evera_sci.structs.TransactionReceipt):
             nonlocal confirmed
             self.assertTrue(receipt.status)
             confirmed = True

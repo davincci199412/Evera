@@ -9,11 +9,11 @@ iow, always sends `SubtaskResultsRejected`.
 import mock
 import sys
 
-from golem.task.tasksession import TaskSession
+from evera.task.tasksession import TaskSession
 
 from scripts.node_integration_tests import params
 
-from golemapp import start  # noqa: E402 module level import not at top of file
+from everaapp import start  # noqa: E402 module level import not at top of file
 
 sys.argv.extend(params.REQUESTOR_ARGS_DEBUG)
 
@@ -29,5 +29,5 @@ def ts_init(self, *args, **kwargs):
     self.task_manager.verify_subtask = _verify_subtask
 
 
-with mock.patch("golem.task.tasksession.TaskSession.__init__", ts_init):
+with mock.patch("evera.task.tasksession.TaskSession.__init__", ts_init):
     start()

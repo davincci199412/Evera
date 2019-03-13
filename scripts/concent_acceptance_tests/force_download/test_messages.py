@@ -2,8 +2,8 @@ import logging
 
 import unittest
 
-from golem_messages import factories as msg_factories
-from golem_messages.message import concents as concent_msg
+from evera_messages import factories as msg_factories
+from evera_messages.message import concents as concent_msg
 
 from .base import ForceDownloadBaseTest
 

@@ -18,7 +18,7 @@ from scripts.node_integration_tests.params import (
 )
 
 
-from golem.rpc.cert import CertificateError
+from evera.rpc.cert import CertificateError
 
 _sslverify.platformTrust = lambda: None
 
@@ -65,7 +65,7 @@ class NodeTestPlaybook:
     reconnect_countdown_initial = 10
     reconnect_countdown = None
 
-    playbook_description = 'Runs a golem node integration test'
+    playbook_description = 'Runs a evera node integration test'
 
     node_restart_count = 0
 
@@ -484,7 +484,7 @@ class NodeTestPlaybook:
         print("Requestor data directory: %s" % self.requestor_datadir)
 
         if self.provider_enabled:
-            self.provider_node = helpers.run_golem_node(
+            self.provider_node = helpers.run_evera_node(
                 self.provider_node_script,
                 '--datadir', self.provider_datadir,
                 nodes_root=self.nodes_root,
@@ -493,7 +493,7 @@ class NodeTestPlaybook:
                 self.provider_node)
 
         if self.requestor_enabled:
-            self.requestor_node = helpers.run_golem_node(
+            self.requestor_node = helpers.run_evera_node(
                 self.requestor_node_script,
                 '--datadir', self.requestor_datadir,
                 nodes_root=self.nodes_root,

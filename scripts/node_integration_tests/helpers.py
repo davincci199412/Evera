@@ -15,16 +15,16 @@ from . import tasks
 
 
 def get_testdir():
-    env_key = 'GOLEM_INTEGRATION_TEST_DIR'
+    env_key = 'EVERA_INTEGRATION_TEST_DIR'
     datadir = os.environ.get(env_key, None)
     if not datadir:
-        datadir = tempfile.mkdtemp(prefix='golem-integration-test-')
+        datadir = tempfile.mkdtemp(prefix='evera-integration-test-')
         os.environ[env_key] = datadir
     return datadir
 
 
 def mkdatadir(role: str):
-    return tempfile.mkdtemp(prefix='golem-{}-'.format(role.lower()))
+    return tempfile.mkdtemp(prefix='evera-{}-'.format(role.lower()))
 
 
 def yesterday():
@@ -50,7 +50,7 @@ def gracefully_shutdown(process: subprocess.Popen, node_type: str):
     print("%s shut down correctly." % node_type)
 
 
-def run_golem_node(node_type: str, *args,
+def run_evera_node(node_type: str, *args,
                    nodes_root: typing.Optional[pathlib.Path] = None):
     node_file = node_type + '.py'
     cwd = nodes_root or pathlib.Path(os.path.realpath(__file__)).parent

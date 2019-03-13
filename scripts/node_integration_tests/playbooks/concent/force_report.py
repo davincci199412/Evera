@@ -2,8 +2,8 @@ import datetime
 import re
 import time
 
-from golem_messages.message.tasks import AckReportComputedTask
-from golem_messages.register import library
+from evera_messages.message.tasks import AckReportComputedTask
+from evera_messages.register import library
 
 from scripts.node_integration_tests import helpers
 

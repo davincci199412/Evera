@@ -11,10 +11,10 @@ from unittest import mock
 
 import faker
 
-from golem_messages.message import concents as concent_msg
+from evera_messages.message import concents as concent_msg
 
-from golem.core.simplehash import SimpleHash
-from golem.network.concent.filetransfers import (
+from evera.core.simplehash import SimpleHash
+from evera.network.concent.filetransfers import (
     ConcentFiletransferService, ConcentFileRequest
 )
 

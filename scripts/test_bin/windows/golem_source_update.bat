@@ -1,5 +1,5 @@
 
-call ".\golem_source__prep.bat"
+call ".\evera_source__prep.bat"
 
 echo "Install requirements"
 pip install -r requirements.txt

@@ -1,5 +1,5 @@
 
-from golem_messages import factories as msg_factories
+from evera_messages import factories as msg_factories
 
 from ..base import ConcentBaseTest
 

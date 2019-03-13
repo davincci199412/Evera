@@ -1,7 +1,7 @@
 
-call ".\golem_source__prep.bat"
+call ".\evera_source__prep.bat"
 
-echo "Running golem with DEBUG logs"
-python golemapp.py --loglevel DEBUG
+echo "Running evera with DEBUG logs"
+python everaapp.py --loglevel DEBUG
 
 pause

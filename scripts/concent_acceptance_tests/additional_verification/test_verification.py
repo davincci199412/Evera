@@ -2,11 +2,11 @@ import time
 
 from unittest import mock
 
-from golem_messages.message import concents as concent_msg
-from golem_messages.message import tasks as tasks_msg
+from evera_messages.message import concents as concent_msg
+from evera_messages.message import tasks as tasks_msg
 
 
-from golem.network.concent.filetransfers import (
+from evera.network.concent.filetransfers import (
     ConcentFiletransferService, ConcentFileRequest
 )
 

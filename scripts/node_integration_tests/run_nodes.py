@@ -5,7 +5,7 @@ import time
 from scripts.node_integration_tests import helpers
 
 parser = ArgumentParser(
-    description="Run a pair of golem nodes with default test parameters"
+    description="Run a pair of evera nodes with default test parameters"
 )
 parser.add_argument(
     '--provider-datadir',
@@ -19,9 +19,9 @@ parser.add_argument(
 )
 args = parser.parse_args()
 
-provider_node = helpers.run_golem_node(
+provider_node = helpers.run_evera_node(
     'provider/debug', '--datadir', args.provider_datadir)
-requestor_node = helpers.run_golem_node(
+requestor_node = helpers.run_evera_node(
     'requestor/debug', '--datadir', args.requestor_datadir
 )
 

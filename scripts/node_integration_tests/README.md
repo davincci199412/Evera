@@ -1,16 +1,16 @@
-# Golem node integration tests
+# Evera node integration tests
 
 This module contains the local node integration tests.
-These tests run provider-requestor pairs of full `golem` nodes locally
-to test various interactions of golem instances.
+These tests run provider-requestor pairs of full `evera` nodes locally
+to test various interactions of evera instances.
 
 As pairs of nodes are created each time a single test is run,
 please keep in mind that those tests usually take a long time to execute,
 on the order of several minutes per single test.
 
 The tests consist of two major parts:
-* `golem` - the tests that strictly test interactions between
-two golem instances
+* `evera` - the tests that strictly test interactions between
+two evera instances
 * `concent`- the tests that run instance pairs in such way as to trigger
 Concent Service calls and test whether the task runs still complete
 correctly when Concent is involved.
@@ -18,14 +18,14 @@ correctly when Concent is involved.
 ## How the tests work
 
 Each test in this suite spawns of a pair of nodes - a provider and
-a requestor. Those can be either perfectly normal, unmodified Golem nodes,
+a requestor. Those can be either perfectly normal, unmodified Evera nodes,
 or tweaked nodes - usually on just one end - that display some unstandard
 behavior - e.g. a requestor node that always fails the submitted results.
 
 This allows us to simulate various scenarios of two nodes interacting with
 each other and verifying they do indeed react the way we intend them to.
 
-We could theoretically create tests that employ more than two golem instances
+We could theoretically create tests that employ more than two evera instances
 but we don't do that yet and it's not yet supported by the test suite. 
 
 ### Components
@@ -34,7 +34,7 @@ Here's the list of components that make up the test suite.
 
 #### nodes
 
-The scripts that run the actual golem processes and which can
+The scripts that run the actual evera processes and which can
 introduce modifications to the regular node behavior, implemented using
 `mock`
 
@@ -44,18 +44,18 @@ The scripts for the tests themselves, each of which is an instance of
 `playbooks.base.NodeTestPlaybook` and is comprised of discrete steps
 through which the execution of the test progresses.
 
-After both golem instances are spawned, most of the steps consist of RPC calls
+After both evera instances are spawned, most of the steps consist of RPC calls
 to either the requestor or to the provider node and checking for expected
 output in subsequent phases of the test, which usually means during subsequent
 phases of a task execution.
 
 In the very few cases where RPC calls are unavailable for a given check,
-Golem's standard output can be sieved through for expected entries.
+Evera's standard output can be sieved through for expected entries.
 
 
 #### rpc
 
-The RPC client used by the playbooks to connect to the golem nodes' RPC
+The RPC client used by the playbooks to connect to the evera nodes' RPC
 endpoints.
 
 #### tasks
@@ -89,7 +89,7 @@ further interact with one or both of the tested nodes.
 usage: run_nodes.py [-h] [--provider-datadir PROVIDER_DATADIR]
                     [--requestor-datadir REQUESTOR_DATADIR]
 
-Run a pair of golem nodes with default test parameters
+Run a pair of evera nodes with default test parameters
 
 optional arguments:
   -h, --help            show this help message and exit
@@ -121,7 +121,7 @@ you to specify additional parameters.
 example:
 
 ```
-./scripts/node_integration_tests/run_test.py golem.regular_run.RegularRun
+./scripts/node_integration_tests/run_test.py evera.regular_run.RegularRun
 ```
 
 full usage:
@@ -137,7 +137,7 @@ Runs a single test playbook.
 
 positional arguments:
   playbook_class        a dot-separated path to the playbook class within
-                        `playbooks`, e.g. golem.regular_run.RegularRun
+                        `playbooks`, e.g. evera.regular_run.RegularRun
 
 optional arguments:
   -h, --help            show this help message and exit
@@ -164,20 +164,20 @@ pytest scripts/node_integration_tests
 
 If you need to control where the test artifacts are stored - e.g. in order to 
 upload them as the CI build artifact after the whole run, you can provide the
-root directory for all the artifacts in the `GOLEM_INTEGRATION_TEST_DIR`
+root directory for all the artifacts in the `EVERA_INTEGRATION_TEST_DIR`
 environment variable, e.g.:
  
 ```
-GOLEM_INTEGRATION_TEST_DIR=/some/location pytest scripts/node_integration_tests
+EVERA_INTEGRATION_TEST_DIR=/some/location pytest scripts/node_integration_tests
 ```
 
 And finally, to run a single test using `pytest`, just use standard `pytest`
 syntax, e.g.:
 
 ```
-pytest scripts/node_integration_tests/tests/test_golem.py::GolemNodeTest::test_regular_task_run
+pytest scripts/node_integration_tests/tests/test_evera.py::EveraNodeTest::test_regular_task_run
 ```
 
-Suggestion: when you _don't_ provide the `GOLEM_INTEGRATION_TEST_DIR` variable
+Suggestion: when you _don't_ provide the `EVERA_INTEGRATION_TEST_DIR` variable
 to pytest, run `pytest -s -v [...]` so that you can see the paths generated
 automatically during the test run.

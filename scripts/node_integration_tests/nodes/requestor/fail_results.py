@@ -11,7 +11,7 @@ import time
 
 from scripts.node_integration_tests import params
 
-from golemapp import start  # noqa: E402 module level import not at top of file
+from everaapp import start  # noqa: E402 module level import not at top of file
 
 sys.argv.extend(params.REQUESTOR_ARGS_DEBUG)
 
@@ -23,7 +23,7 @@ def pull_package(
     error('wrench in the gears')
 
 
-with mock.patch("golem.task.result.resultmanager."
+with mock.patch("evera.task.result.resultmanager."
                 "EncryptedResultPackageManager.pull_package",
                 pull_package):
     start()

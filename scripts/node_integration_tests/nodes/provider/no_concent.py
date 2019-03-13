@@ -8,7 +8,7 @@ Regular, unmodified Provider node, running with DEBUG loglevel
 import sys
 from scripts.node_integration_tests import params
 
-from golemapp import start
+from everaapp import start
 
 sys.argv.extend(params.PROVIDER_ARGS_NO_CONCENT)
 

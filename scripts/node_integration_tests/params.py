@@ -29,14 +29,14 @@ def _mainnet(args_dict):
     return args_dict
 
 
-PROVIDER_RPC_PORT = os.environ.get('GOLEM_PROVIDER_RPC_PORT', '61001')
-REQUESTOR_RPC_PORT = os.environ.get('GOLEM_REQUESTOR_RPC_PORT', '61000')
+PROVIDER_RPC_PORT = os.environ.get('EVERA_PROVIDER_RPC_PORT', '61001')
+REQUESTOR_RPC_PORT = os.environ.get('EVERA_REQUESTOR_RPC_PORT', '61000')
 
-PROVIDER_PASSWORD = os.environ.get('GOLEM_PROVIDER_PASSWORD', 'dupa.8')
-REQUESTOR_PASSWORD = os.environ.get('GOLEM_REQUESTOR_PASSWORD', 'dupa.8')
+PROVIDER_PASSWORD = os.environ.get('EVERA_PROVIDER_PASSWORD', 'dupa.8')
+REQUESTOR_PASSWORD = os.environ.get('EVERA_REQUESTOR_PASSWORD', 'dupa.8')
 
 _REQUESTOR_ARGS = {
-    '--concent': os.environ.get('GOLEM_CONCENT_VARIANT', 'staging'),
+    '--concent': os.environ.get('EVERA_CONCENT_VARIANT', 'staging'),
     '--password': REQUESTOR_PASSWORD,
     '--accept-terms': None,
     '--accept-concent-terms': None,
@@ -46,7 +46,7 @@ _REQUESTOR_ARGS = {
 REQUESTOR_ARGS = params_from_dict(_REQUESTOR_ARGS)
 
 _PROVIDER_ARGS = {
-    '--concent': os.environ.get('GOLEM_CONCENT_VARIANT', 'staging'),
+    '--concent': os.environ.get('EVERA_CONCENT_VARIANT', 'staging'),
     '--password': PROVIDER_PASSWORD,
     '--accept-terms': None,
     '--accept-concent-terms': None,

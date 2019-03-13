@@ -9,10 +9,10 @@ because of a docker image problem
 import mock
 import sys
 
-from golem_messages import message
+from evera_messages import message
 from scripts.node_integration_tests import params
 
-from golemapp import start
+from everaapp import start
 
 sys.argv.extend(params.PROVIDER_ARGS_DEBUG)
 
@@ -22,6 +22,6 @@ def wrong_docker_images(self, ctd):
     return False
 
 
-with mock.patch("golem.task.tasksession.TaskSession._set_env_params",
+with mock.patch("evera.task.tasksession.TaskSession._set_env_params",
                 wrong_docker_images):
     start()

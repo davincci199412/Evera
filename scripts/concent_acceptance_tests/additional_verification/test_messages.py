@@ -1,4 +1,4 @@
-from golem_messages.message import concents as concent_msg
+from evera_messages.message import concents as concent_msg
 
 from .base import SubtaskResultsVerifyBaseTest
 

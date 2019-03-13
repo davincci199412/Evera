@@ -14,16 +14,16 @@ if (Get-Command "AI_GetMsiProperty" -errorAction SilentlyContinue)
 $ErrorActionPreference = "Stop"
 
 # Your code goes here.
-$golemUserName = "golem-docker"
-"golemUserName: " + $golemUserName
+$everaUserName = "evera-docker"
+"everaUserName: " + $everaUserName
 
-$currentGolemUser = Get-LocalUser | ?{$_.Name -eq $golemUserName}
-"currentGolemUser: " + $currentGolemUser
-if( ! $currentGolemUser )
+$currentEveraUser = Get-LocalUser | ?{$_.Name -eq $everaUserName}
+"currentEveraUser: " + $currentEveraUser
+if( ! $currentEveraUser )
 {
     "Creating local user"
-    $securePassword = ConvertTo-SecureString $golemUserName -AsPlainText -Force
-    New-LocalUser -Name $golemUserName -Password $securePassword -Description "Account to use docker with golem." -AccountNeverExpires -PasswordNeverExpires
+    $securePassword = ConvertTo-SecureString $everaUserName -AsPlainText -Force
+    New-LocalUser -Name $everaUserName -Password $securePassword -Description "Account to use docker with evera." -AccountNeverExpires -PasswordNeverExpires
     "Local user created"
 }
 # TODO: set execution policy here?
@@ -34,10 +34,10 @@ if( ! $currentGolemUser )
 $createShareScript = $createShareFolder + "create-share.ps1"
 "createShareScript: " + $createShareScript
 
-$golemDataDir = $appDataDir + "\golem\golem\default"
-$mainnetDir = $golemDataDir + "\mainnet\ComputerRes"
+$everaDataDir = $appDataDir + "\evera\evera\default"
+$mainnetDir = $everaDataDir + "\mainnet\ComputerRes"
 "mainnetDir: " + $mainnetDir
-$testnetDir = $golemDataDir + "\rinkeby\ComputerRes"
+$testnetDir = $everaDataDir + "\rinkeby\ComputerRes"
 "testnetDir: " + $testnetDir
 
 function EnsureShare {
@@ -45,7 +45,7 @@ function EnsureShare {
     "Ensure Shared folder"
     md $folder -Force
     "Folder created, create share"
-    &"$createShareScript" "$golemUserName" "$folder"
+    &"$createShareScript" "$everaUserName" "$folder"
     "Share created"
 }
 
@@ -82,17 +82,17 @@ if( $HvAdminGroup )
     }
 }
 
-"Check Golem SMB firewall rule"
-$firewallRule = Get-NetFirewallRule | ?{$_.name -eq "GOLEM-SMB"}
+"Check Evera SMB firewall rule"
+$firewallRule = Get-NetFirewallRule | ?{$_.name -eq "EVERA-SMB"}
 "Current rule: " + $firewallRule
 if( ! $firewallRule )
 {
-    New-NetFirewallRule -DisplayName "Golem SMB" -Name "GOLEM-SMB" `
+    New-NetFirewallRule -DisplayName "Evera SMB" -Name "EVERA-SMB" `
      -Direction Inbound -LocalPort 445 -Protocol TCP `
      -RemoteAddress 172.16.0.0/12 -LocalAddress 172.16.0.0/12 `
      -Program System -Action Allow
 
-    $firewallRule = Get-NetFirewallRule | ?{$_.name -eq "GOLEM-SMB"}
+    $firewallRule = Get-NetFirewallRule | ?{$_.name -eq "EVERA-SMB"}
     "Created rule: " + $firewallRule
     if( ! $firewallRule )
     {

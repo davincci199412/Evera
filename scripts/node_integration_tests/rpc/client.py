@@ -1,12 +1,12 @@
 import os
 import sys
 
-from golem.core.simpleenv import get_local_datadir
-from golem.rpc.cert import CertificateManager
-from golem.rpc.common import (
+from evera.core.simpleenv import get_local_datadir
+from evera.rpc.cert import CertificateManager
+from evera.rpc.common import (
     CROSSBAR_REALM, CROSSBAR_PORT, CROSSBAR_HOST, CROSSBAR_DIR
 )
-from golem.rpc.session import Session, WebSocketAddress
+from evera.rpc.session import Session, WebSocketAddress
 
 
 class RPCClient:
@@ -22,7 +22,7 @@ class RPCClient:
         cert_manager = CertificateManager(
             os.path.join(get_local_datadir(datadir), CROSSBAR_DIR)
         )
-        crsb_user = cert_manager.CrossbarUsers.golemcli
+        crsb_user = cert_manager.CrossbarUsers.everacli
         secret = cert_manager.get_secret(crsb_user)
         self.session = Session(
             address,
@@ -46,7 +46,7 @@ class RPCClient:
             return deferred
 
         def connection_error(error):
-            sys.stderr.write("Error connecting to Golem instance ({}): {}\n"
+            sys.stderr.write("Error connecting to Evera instance ({}): {}\n"
                              .format(self.session.address, error))
 
             self.shutdown()

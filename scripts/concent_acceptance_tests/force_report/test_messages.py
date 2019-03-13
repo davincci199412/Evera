@@ -4,8 +4,8 @@ import logging
 import time
 import unittest
 
-from golem_messages import factories as msg_factories
-from golem_messages import message
+from evera_messages import factories as msg_factories
+from evera_messages import message
 
 from ..base import ConcentBaseTest
 

@@ -10,7 +10,7 @@ Name of the created share is MD5 digest of normalized <SharedDirPath>.
 If a share with this name already exists script does not create a new one.
 
 .EXAMPLE
-./create-share.ps1 -UserName golem-docker -SharedDirPath C:\Users\golem-workdir
+./create-share.ps1 -UserName evera-docker -SharedDirPath C:\Users\evera-workdir
 
 #>
 

@@ -18,10 +18,10 @@ RUN pip install pyinstaller
 RUN ln -s /usr/lib/libfreeimage.so.3 /usr/lib/libfreeimage.so
 
 # Initial installation for faster future rebuilds
-RUN git clone https://github.com/golemfactory/golem --depth 1
-RUN cd golem && pip install -r requirements.txt
-RUN cd golem && python setup.py develop
-RUN chmod -R 752 golem
+RUN git clone https://github.com/everafactory/evera --depth 1
+RUN cd evera && pip install -r requirements.txt
+RUN cd evera && python setup.py develop
+RUN chmod -R 752 evera
 
 ADD entrypoint.sh /usr/bin/entrypoint.sh
 ENTRYPOINT ["/usr/bin/entrypoint.sh"]

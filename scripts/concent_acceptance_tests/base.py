@@ -15,22 +15,22 @@ import unittest
 from pathlib import Path
 
 from ethereum.utils import denoms
-import golem_messages
+import evera_messages
 
-from golem_messages import cryptography
-from golem_messages import helpers
-from golem_messages import serializer
-from golem_messages import utils as msg_utils
-from golem_messages.message.base import Message
-from golem_messages.message import concents
+from evera_messages import cryptography
+from evera_messages import helpers
+from evera_messages import serializer
+from evera_messages import utils as msg_utils
+from evera_messages.message.base import Message
+from evera_messages.message import concents
 
-from golem_sci import (
+from evera_sci import (
     new_sci_rpc, SmartContractsInterface, JsonTransactionsStorage)
 
-from golem.core import variables
-from golem.ethereum.transactionsystem import tETH_faucet_donate
-from golem.network.concent import client
-from golem.utils import privkeytoaddr
+from evera.core import variables
+from evera.ethereum.transactionsystem import tETH_faucet_donate
+from evera.network.concent import client
+from evera.utils import privkeytoaddr
 
 logger = logging.getLogger(__name__)
 
@@ -60,13 +60,13 @@ class ConcentBaseTest(unittest.TestCase):
         return cryptography.ECCx(None)
 
     def setUp(self):
-        from golem.config.environments import set_environment
+        from evera.config.environments import set_environment
         concent_variant = os.environ.get('CONCENT_VARIANT', 'staging')
         set_environment('testnet', concent_variant)
         self.variant = variables.CONCENT_CHOICES[concent_variant]
         self.provider_keys = self._fake_keys()
         self.requestor_keys = self._fake_keys()
-        from golem.core import common
+        from evera.core import common
         common.config_logging(suffix='concent-acceptance')
         logger.debug('Provider key: %s',
                      base64.b64encode(self.provider_pub_key).decode())
@@ -168,7 +168,7 @@ class ConcentBaseTest(unittest.TestCase):
     def _load_response(self, response, priv_key):
         if response is None:
             return None
-        return golem_messages.load(
+        return evera_messages.load(
             response, priv_key, self.variant['pubkey'])
 
     def provider_load_response(self, response):
@@ -233,7 +233,7 @@ class SCIBaseTest(ConcentBaseTest):
 
     def setUp(self):
         super().setUp()
-        from golem.config.environments.testnet import EthereumConfig
+        from evera.config.environments.testnet import EthereumConfig
         random.seed()
 
         self.transaction_timeout = datetime.timedelta(seconds=300)

@@ -5,13 +5,13 @@ import logging
 import random
 import uuid
 
-from golem_messages import constants
-from golem_messages import factories as msg_factories
-from golem_messages import helpers
-from golem_messages import message
-from golem_messages.factories.helpers import fake_golem_uuid
+from evera_messages import constants
+from evera_messages import factories as msg_factories
+from evera_messages import helpers
+from evera_messages import message
+from evera_messages.factories.helpers import fake_evera_uuid
 
-from golem.network.concent import exceptions as concent_exceptions
+from evera.network.concent import exceptions as concent_exceptions
 
 from ..base import SCIBaseTest
 
@@ -173,8 +173,8 @@ class RequestorDoesntSendTestCase(SCIBaseTest):
 
     def test_already_processed(self):
         requestor_id = "1234"
-        task_id = fake_golem_uuid(requestor_id)
-        subtask_id = fake_golem_uuid(requestor_id)
+        task_id = fake_evera_uuid(requestor_id)
+        subtask_id = fake_evera_uuid(requestor_id)
         kwargs = {
             'task_to_compute__requestor_id': requestor_id,
             'task_to_compute__task_id': task_id,

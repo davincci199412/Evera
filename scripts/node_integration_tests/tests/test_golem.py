@@ -1,53 +1,53 @@
 import unittest
 
-from golem.core.variables import PROTOCOL_CONST
+from evera.core.variables import PROTOCOL_CONST
 
 from .base import NodeTestBase
 
 
-class GolemNodeTest(NodeTestBase, unittest.TestCase):
+class EveraNodeTest(NodeTestBase, unittest.TestCase):
 
     def test_regular_task_run(self):
-        exit_code = self._run_test('golem.regular_run.RegularRun')
+        exit_code = self._run_test('evera.regular_run.RegularRun')
         self.assertEqual(exit_code, 0)
 
     def test_no_concent(self):
-        exit_code = self._run_test('golem.no_concent.NoConcent')
+        exit_code = self._run_test('evera.no_concent.NoConcent')
         self.assertEqual(exit_code, 0)
 
     def test_rpc(self):
-        exit_code = self._run_test('golem.rpc_test.RPCTest')
+        exit_code = self._run_test('evera.rpc_test.RPCTest')
         self.assertEqual(exit_code, 0)
 
     def test_rpc_mainnet(self):
         exit_code = self._run_test(
-            'golem.rpc_test.MainnetRPCTest', '--mainnet')
+            'evera.rpc_test.MainnetRPCTest', '--mainnet')
         self.assertEqual(exit_code, 0)
 
     def test_task_timeout(self):
-        exit_code = self._run_test('golem.task_timeout.TaskTimeoutAndRestart')
+        exit_code = self._run_test('evera.task_timeout.TaskTimeoutAndRestart')
         self.assertEqual(exit_code, 0)
 
     def test_frame_restart(self):
-        exit_code = self._run_test('golem.restart_frame.RestartFrame')
+        exit_code = self._run_test('evera.restart_frame.RestartFrame')
         self.assertEqual(exit_code, 0)
 
     @unittest.skipIf(PROTOCOL_CONST.ID <= '29', "Known issue in 0.18.x")
     def test_exr(self):
-        exit_code = self._run_test('golem.exr.RegularRun')
+        exit_code = self._run_test('evera.exr.RegularRun')
         self.assertEqual(exit_code, 0)
 
     def test_jpeg(self):
-        exit_code = self._run_test('golem.jpeg.RegularRun')
+        exit_code = self._run_test('evera.jpeg.RegularRun')
         self.assertEqual(exit_code, 0)
 
     def test_jpg(self):
-        exit_code = self._run_test('golem.jpg.RegularRun')
+        exit_code = self._run_test('evera.jpg.RegularRun')
         self.assertEqual(exit_code, 0)
 
     def test_nested(self):
         exit_code = self._run_test(
-            'golem.regular_run_stop_on_reject.RegularRun',
+            'evera.regular_run_stop_on_reject.RegularRun',
             **{'task-package': 'nested'}
         )
         self.assertEqual(exit_code, 0)

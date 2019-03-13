@@ -1,7 +1,7 @@
 
-call ".\golem_source__prep.bat"
+call ".\evera_source__prep.bat"
 
-echo "Running golem"
-python golemapp.py
+echo "Running evera"
+python everaapp.py
 
 pause

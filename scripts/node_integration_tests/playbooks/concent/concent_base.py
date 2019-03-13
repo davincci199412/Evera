@@ -23,7 +23,7 @@ class ConcentTestPlaybook(NodeTestPlaybook):
                 print("Concent unexpectedly already enabled for %s...", role)
             return self.next()
 
-        return call_method('golem.concent.switch', on_success=on_success)
+        return call_method('evera.concent.switch', on_success=on_success)
 
     def step_is_provider_concent_off(self):
         return self._step_is_concent_off('provider')
@@ -42,7 +42,7 @@ class ConcentTestPlaybook(NodeTestPlaybook):
             self.fail()
 
         return call_method(
-            'golem.concent.switch.turn', 1,
+            'evera.concent.switch.turn', 1,
             on_success=on_success, on_error=on_error,
         )
 
@@ -67,7 +67,7 @@ class ConcentTestPlaybook(NodeTestPlaybook):
                 )
             return self.next()
 
-        return call_method('golem.concent.switch', on_success=on_success)
+        return call_method('evera.concent.switch', on_success=on_success)
 
     def step_ensure_provider_concent_on(self):
         return self._step_ensure_concent_on('provider')
@@ -83,9 +83,9 @@ class ConcentTestPlaybook(NodeTestPlaybook):
             awaited_messages: typing.Optional[list] = None
     ) -> typing.Tuple[typing.Optional[bool], typing.Optional[typing.Match]]:
         """
-        Process the golem node's log queue to look for names of expected
+        Process the evera node's log queue to look for names of expected
         messages, while at the same time checking if the logs don't contain
-        any indication of Golem<->Concent communication failure.
+        any indication of Evera<->Concent communication failure.
 
         :param output_queue: the provider or requestor standard output queue
         :param outgoing: if `True` we're waiting for an outgoing message

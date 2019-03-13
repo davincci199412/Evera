@@ -9,13 +9,13 @@ import sys
 
 from scripts.node_integration_tests import params
 
-from golemapp import start  # noqa: E402 module level import not at top of file
+from everaapp import start  # noqa: E402 module level import not at top of file
 
 sys.argv.extend(params.REQUESTOR_ARGS_DEBUG)
 
 
 with mock.patch(
-        'golem.ethereum.paymentprocessor.PaymentProcessor.sendout',
+        'evera.ethereum.paymentprocessor.PaymentProcessor.sendout',
         mock.Mock(return_value=True),
 ):
     start()

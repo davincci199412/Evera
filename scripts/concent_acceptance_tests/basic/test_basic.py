@@ -2,13 +2,13 @@ import logging
 import unittest
 from unittest import mock
 
-from golem_messages import factories as msg_factories
-from golem_messages.factories import helpers as msg_factories_helpers
+from evera_messages import factories as msg_factories
+from evera_messages.factories import helpers as msg_factories_helpers
 
-from golem import constants as gconst
-from golem import utils
-from golem.network.concent import client
-from golem.network.concent.exceptions import ConcentRequestError
+from evera import constants as gconst
+from evera import utils
+from evera.network.concent import client
+from evera.network.concent.exceptions import ConcentRequestError
 
 from ..base import ConcentBaseTest
 
@@ -38,7 +38,7 @@ class SendTest(ConcentBaseTest, unittest.TestCase):
         msg = msg_factories.concents.ForceReportComputedTaskFactory()
         with self.assertRaisesRegex(
             ConcentRequestError,
-            '.*exception when validating if golem_message'
+            '.*exception when validating if evera_message'
             '.* is signed with public key'
         ):
             self.send_to_concent(msg)
@@ -47,14 +47,14 @@ class SendTest(ConcentBaseTest, unittest.TestCase):
         version = msg_factories_helpers.fake_version()
         while utils.is_version_compatible(
                 theirs=version,
-                spec=gconst.GOLEM_MESSAGES_SPEC
+                spec=gconst.EVERA_MESSAGES_SPEC
         ):
             version = msg_factories_helpers.fake_version()
         msg = msg_factories.concents.ForceReportComputedTaskFactory(
             **self.gen_rtc_kwargs('report_computed_task__'),
             **self.gen_ttc_kwargs('report_computed_task__task_to_compute__'),
         )
-        with mock.patch('golem_messages.__version__', version):
+        with mock.patch('evera_messages.__version__', version):
             with self.assertRaisesRegex(
                 ConcentRequestError,
                 r'''Concent request exception \(404\).*''',

@@ -1,16 +1,16 @@
-# Golem test scripts
+# Evera test scripts
 
-This is a list of "clickable" helper scripts to control  running golem.
+This is a list of "clickable" helper scripts to control  running evera.
 
 ## From source
-Scripts prefixed with `golem_source_` will control running and updating golem from source.
+Scripts prefixed with `evera_source_` will control running and updating evera from source.
 
 _Init is still a work in progress, please install dependencies first from the wiki guides "Running from source"_
 - *init*
   - TODO: Install Dependencies
   - Create ~/projects folder
-  - Clone golem
-  - Initialize golem-env
+  - Clone evera
+  - Initialize evera-env
   - Create docker-machine ( mac )
   - call "update"
 - *update*

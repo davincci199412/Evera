@@ -2,10 +2,10 @@ import click
 import logging
 from twisted.internet.defer import inlineCallbacks
 
-from golem.core.common import config_logging
-from golem.node import OptNode
-from golem.rpc.mapping.rpcmethodnames import NAMESPACES
-from golem.rpc.session import Session, WebSocketAddress
+from evera.core.common import config_logging
+from evera.node import OptNode
+from evera.rpc.mapping.rpcmethodnames import NAMESPACES
+from evera.rpc.session import Session, WebSocketAddress
 
 
 class EventLoggingSession(Session):
@@ -81,7 +81,7 @@ def main(datadir, rpc_address):
     config_logging(datadir=datadir)
     logger = logging.getLogger('events')
 
-    address = WebSocketAddress(host, port, realm=u'golem')
+    address = WebSocketAddress(host, port, realm=u'evera')
     events = build_handlers(logger)
 
     rpc_session = EventLoggingSession(logger, address, events=events)

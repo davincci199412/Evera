@@ -3,9 +3,6 @@ import binascii
 import os
 import platform
 import sys
-import logging
-from multiprocessing import freeze_support
-
 import click
 import humanize
 import psutil
@@ -15,7 +12,7 @@ from portalocker import Lock, LockException
 
 # Export pbr version for peewee_migrate user
 
-os.environ["PBR_VERSION"] = '3.1.1'
+os.environ["PBR_VERSION"] = '1.0.0'
 
 # pylint: disable=wrong-import-position
 
@@ -274,6 +271,13 @@ def log_concent_choice(value: dict):
         binascii.hexlify(value['pubkey']).decode('ascii'),
     )
 
+def check_blockinfo():
+    idx = sys.argv.index('-m')
+    sys.argv.pop(idx)
+    logger.info(
+        'blockchain checking: %s',
+        sys.argv(value['id']),
+    )
 
 def generate_rpc_certificate(datadir: str):
     from evera.rpc.cert import CertificateManager

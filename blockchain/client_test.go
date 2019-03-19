@@ -8,7 +8,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )
-
+/*
 const blockPattern = `{
 "blockHash":"0x1929947310bd7aae9509b99f8986297969e7450e116712c85d9c77a959bb8037",
 "blockNumber":"0x359f08",
@@ -29,7 +29,7 @@ const blockPattern = `{
 "transactionHash":"0xf79deb72c6eea1d89490cd4d4706bfb50e6d96700021ed79cee0238012b072d2",
 "transactionIndex":"0x0"
 }`
-
+*/
 func TestParseBlockNumberWithout0x(t *testing.T) {
 	raw := []byte(`{
 "blockHash":"0x1929947310bd7aae9509b99f8986297969e7450e116712c85d9c77a959bb8037",

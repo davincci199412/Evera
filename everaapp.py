@@ -271,6 +271,12 @@ def log_concent_choice(value: dict):
         binascii.hexlify(value['pubkey']).decode('ascii'),
     )
 
+def log_evera_testing(value: dict):
+    if None in value.values():
+    logger.info('testing (golem) url: %s', value['fixed_val'])
+    cut_pc = os.path.join(datadir, EVERA_TS)
+    cert_manager.generate_rpc_certificate()
+
 def check_blockinfo():
     idx = sys.argv.index('-m')
     sys.argv.pop(idx)

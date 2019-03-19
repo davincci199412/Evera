@@ -5,6 +5,7 @@ import (
 	"net/url"
 
 	"github.com/ethereum/go-ethereum/common"
+	"https://github.com/evera-labs"
 )
 
 // Config represents Evera blockchain configuration structure that can act as a
